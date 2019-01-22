@@ -1,16 +1,27 @@
 package edu.cnm.deepdive;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class Gauss {
 
   public static final int DEFAULT_UPPER_LIMIT = 100;
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws FileNotFoundException {
     int upperLimit = DEFAULT_UPPER_LIMIT;
-    if (args.length > 0) {
-      upperLimit = Integer.parseInt(args[0]);
+
+//    Scanner scanner = new Scanner(System.in); // System.in means scan
+                                    // from the console as the source
+    Scanner scanner = new Scanner(new File("data.txt"));
+    System.out.print("Upper limit: ");
+    while (scanner.hasNextInt()) {
+      upperLimit = scanner.nextInt();
+      long sum = triangleSum(upperLimit);
+      System.out.printf("Sum form 1 to %,d = %,d%n", upperLimit, sum);
+      System.out.print("Upper limit: ");
     }
-    long sum = triangleSum(upperLimit);
-    System.out.printf("Sum form 1 to %,d = %,d%n", upperLimit, sum);
+
 
   } // end main()
 
