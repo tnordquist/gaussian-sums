@@ -5,9 +5,11 @@ public class Gauss {
   public static final int DEFAULT_UPPER_LIMIT = 100;
 
   public static void main(String[] args) {
-    // TODO Read upper limit from args.
     int upperLimit = DEFAULT_UPPER_LIMIT;
-    long sum = triangleSum(upperLimit); // TODO Invoke triangleSum method.
+    if (args.length > 0) {
+      upperLimit = Integer.parseInt(args[0]);
+    }
+    long sum = triangleSum(upperLimit);
     System.out.printf("Sum form 1 to %,d = %,d%n", upperLimit, sum);
 
   } // end main()
